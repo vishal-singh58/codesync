@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Landing from "./pages/Landing";
 import Editor from "./components/Editor";
+import { SyncProvider } from "./context/SyncContext";
 
 interface ActiveWorkspace {
   type: 'room' | 'solo';
@@ -24,12 +25,16 @@ function App() {
   return (
     <>
       {activeWorkspace ? (
+        <SyncProvider roomId="x7k2-alpha">
+  
+
         <Editor 
           workspaceType={activeWorkspace.type}
           workspaceId={activeWorkspace.id}
           workspaceName={activeWorkspace.name}
           onLeave={handleLeaveWorkspace}
         />
+        </SyncProvider>
       ) : (
         /* Passing the routing event handler down to your Landing/Dashboard layout */
         <Landing onSelectWorkspace={handleSelectWorkspace} />
