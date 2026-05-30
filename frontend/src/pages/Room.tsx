@@ -201,7 +201,8 @@ export default function RoomDashboard({ onSelectWorkspace }: RoomDashboardProps)
             {rooms.map((room) => (
               <div 
                 key={room.id}
-                className="group p-5 bg-[#090d1a]/40 border border-gray-900 hover:border-indigo-500/20 rounded-xl transition-all duration-200 flex flex-col justify-between relative overflow-hidden shadow-md"
+                onClick={() => onSelectWorkspace('room', room.id, room.name)}
+                className="group p-5 bg-[#090d1a]/40 border border-gray-900 hover:border-indigo-500/20 rounded-xl transition-all duration-200 flex flex-col justify-between relative overflow-hidden shadow-md cursor-pointer"
               >
                 <div className="absolute top-0 inset-x-0 h-[2px] bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div>
@@ -220,14 +221,10 @@ export default function RoomDashboard({ onSelectWorkspace }: RoomDashboardProps)
                 </div>
                 <div className="mt-6 pt-3 border-t border-gray-950/60 flex items-center justify-between text-[11px] text-gray-500">
                   <span>Updated {room.updatedAt}</span>
-                  {/* Click Event ab sirf yahan trigger hoga */}
-                  <button
-                    onClick={() => onSelectWorkspace('room', room.id, room.name)}
-                    className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors flex items-center gap-0.5 focus:outline-none"
-                  >
+                  <span className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors flex items-center gap-0.5">
                     Connect 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-                  </button>
+                  </span>
                 </div>
               </div>
             ))}
@@ -249,7 +246,8 @@ export default function RoomDashboard({ onSelectWorkspace }: RoomDashboardProps)
             {soloProjects.map((project) => (
               <div 
                 key={project.id}
-                className="group p-5 bg-[#090d1a]/20 border border-gray-900/60 hover:border-purple-500/20 rounded-xl transition-all duration-200 flex flex-col justify-between relative overflow-hidden shadow-sm"
+                onClick={() => onSelectWorkspace('solo', project.id, project.title)}
+                className="group p-5 bg-[#090d1a]/20 border border-gray-900/60 hover:border-purple-500/20 rounded-xl transition-all duration-200 flex flex-col justify-between relative overflow-hidden shadow-sm cursor-pointer"
               >
                 <div className="absolute top-0 inset-x-0 h-[2px] bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div>
@@ -271,14 +269,10 @@ export default function RoomDashboard({ onSelectWorkspace }: RoomDashboardProps)
                 </div>
                 <div className="mt-6 pt-3 border-t border-gray-950/60 flex items-center justify-between text-[11px] text-gray-500">
                   <span>Created {project.createdAt}</span>
-                  {/* Click Event ab sirf yahan trigger hoga */}
-                  <button
-                    onClick={() => onSelectWorkspace('solo', project.id, project.title)}
-                    className="text-purple-400 font-bold hover:text-purple-300 transition-colors flex items-center gap-0.5 focus:outline-none"
-                  >
+                  <span className="text-purple-400 font-bold hover:text-purple-300 transition-colors flex items-center gap-0.5">
                     Open Editor 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-                  </button>
+                  </span>
                 </div>
               </div>
             ))}
